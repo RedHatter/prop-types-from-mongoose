@@ -1,14 +1,28 @@
 {
-  "name": "mongoose-prop-types",
+  "name": "prop-types-from-mongoose",
   "version": "1.0.0",
-  "description": "Generate ProptTypes validation from Mongoose schema.",
+  "description": "Generate PropTypes validation from Mongoose schema.",
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=html --reporter=text-summary mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
+  "keywords": [
+      "react",
+      "proptypes",
+      "schema",
+      "mongoose",
+      "mongodb"
+  ],
   "author": "Timothy Johnson",
   "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/RedHatter/prop-types-from-mongoose/issues"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/RedHatter/prop-types-from-mongoose"
+  },
   "peerDependencies": {
     "mongoose": "^5.1.2",
     "prop-types": "^15.6.1"
