@@ -1,0 +1,16 @@
+{
+  "name": "mongoose-prop-types",
+  "version": "1.0.0",
+  "description": "Generate ProptTypes validation from Mongoose schema.",
+  "main": "index.js",
+  "author": "Timothy Johnson",
+  "license": "GPL-3.0",
+  "peerDependencies": {
+    "mongoose": "^5.1.2",
+    "prop-types": "^15.6.1"
+  },
+  "devDependencies": {
+    "moment": "^2.22.1",
+    "mongoose": "^5.1.3",
+  }
+}
