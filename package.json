@@ -1,6 +1,6 @@
 {
   "name": "prop-types-from-mongoose",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate PropTypes validation from Mongoose schema.",
   "main": "index.js",
   "scripts": {
