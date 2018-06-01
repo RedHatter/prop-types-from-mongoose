@@ -3,12 +3,7 @@ const PropTypes = require('prop-types')
 const validators = require('./validators.js')
 
 function fromSchema (schema, refs) {
-  return fromObject(schema.obj, refs)
-}
-
-function fromObject (obj, refs) {
-  return Object.entries(obj)
-  .reduce((propTypes, [ key, value ]) => (propTypes[key] = getPropType(value, refs), propTypes), {})
+  return getPropType(schema.obj, refs)
 }
 
 function getPropType (value, refs) {
@@ -18,7 +13,8 @@ function getPropType (value, refs) {
   if (Array.isArray(schemaType)) {
     type = schemaType.length > 0 ? PropTypes.arrayOf(getPropType(schemaType[0], refs)) : PropTypes.array
   } else if (typeof schemaType == 'object') {
-    type = PropTypes.shape(fromObject(schemaType))
+    type = PropTypes.shape(Object.entries(schemaType)
+      .reduce((propTypes, [ key, value ]) => (propTypes[key] = getPropType(value, refs), propTypes), {}))
   } else {
     switch (schemaType) {
       case String: {
@@ -71,7 +67,7 @@ function getPropType (value, refs) {
 
       case Schema.Types.ObjectId:
         if (refs && value.ref && refs.hasOwnProperty(value.ref)) {
-          type = PropTypes.shape(fromSchema(refs[value.ref]))
+          type = fromSchema(refs[value.ref])
           break
         }
 
