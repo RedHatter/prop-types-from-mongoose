@@ -1,5 +1,5 @@
 module.exports = {
-  combine: function (validators) {
+  and: function (validators) {
     let validate = validators.length == 1
       ? validators[0]
       : function (...args) {

@@ -38,7 +38,7 @@ function getPropType (value, refs) {
         if (typeof value.maxlength == 'number')
           allTypes.push(validators.maxlength(value.maxlength))
 
-        type = validators.combine(allTypes)
+        type = validators.and(allTypes)
         break
       }
 
@@ -52,7 +52,7 @@ function getPropType (value, refs) {
         if (typeof value.max == 'number')
           allTypes.push(validators.max(value.max))
 
-        type = validators.combine(allTypes)
+        type = validators.and(allTypes)
         break
       }
 
@@ -65,7 +65,7 @@ function getPropType (value, refs) {
         if (value.max instanceof Date)
           allTypes.push(validators.max(value.max))
 
-        type = validators.combine(allTypes)
+        type = validators.and(allTypes)
         break
       }
 
