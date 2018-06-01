@@ -7,14 +7,14 @@
 Generate a validation function for [PropTypes](https://github.com/facebook/prop-types) from Mongoose schema. Supports all Mongoose types and most validators.
 
 ## API
-Exports a single function that takes a Mongoose Schema and returns PropType validation function.
+Exports a single function that takes a Mongoose Schema and returns a PropType validation function.
 
     fromSchema(schema[, refs])
 
 ### Parameters
 
 * `schema`  
-    The `mongoose.Schema` to convert to PropType function
+    The `mongoose.Schema` to convert to a PropType function
 
 * `refs` *Optional*   
     Object mapping nested `Schema`s referenced from `ObjectId`s to their respective names.
@@ -42,7 +42,7 @@ A PropTypes validation function.
 
 ## Example
 
-Here is an example of a React Component use PropType validation based on a Mongoose Schema:
+Here is an example of a React Component using PropType validation based on a Mongoose Schema:
 
     import React, { Component } from 'react'
     import { Schema } from 'mongoose'
