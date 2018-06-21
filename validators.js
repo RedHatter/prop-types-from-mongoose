@@ -22,35 +22,35 @@ module.exports = {
 
   match: function (match) {
     return function (props, propName, componentName) {
-      if (!match.test(props[propName]))
+      if (props[propName] !== undefined && !match.test(props[propName]))
         return new Error (`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Regular expression validation failed.`)
     }
   },
 
   minlength: function (min) {
     return function (props, propName, componentName) {
-      if (props[propName].length < min)
+      if (props[propName] !== undefined && props[propName].length < min)
         return new Error (`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Less than ${min} characters long.`)
     }
   },
 
   maxlength: function (max) {
     return function (props, propName, componentName) {
-      if (props[propName].length > max)
+      if (props[propName] !== undefined && props[propName].length > max)
         return new Error (`Invalid prop \`${propName}\` supplied to \`${componentName}\`. More than ${max} characters long.`)
     }
   },
 
   min: function (min) {
     return function (props, propName, componentName) {
-      if (props[propName] < min)
+      if (props[propName] !== undefined && props[propName] < min)
         return new Error (`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Can not be smaller than ${min}.`)
     }
   },
 
   max: function (max) {
     return function (props, propName, componentName) {
-      if (props[propName] > max)
+      if (props[propName] !== undefined && props[propName] > max)
         return new Error (`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Can not be larger than ${max}.`)
     }
   },

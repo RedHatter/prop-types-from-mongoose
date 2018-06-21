@@ -136,6 +136,14 @@ describe('Schema validation', function() {
         { Nested: new Schema({ a: String }) })
     })
   })
+
+  describe('Bugs', function () {
+    // A property that's not required but has a Special validator (match, enum, min, ect.) should still pass with an undefined field
+    it('Special validators force required', function() {
+      validateSchema(new Schema({ key: { type: String, match: /^a+$/ } }), { a: 'b' }, { key: 'bbb' },
+      'Invalid prop `key` supplied to `$1`. Regular expression validation failed.')
+    })
+  })
 })
 
 function validateSchema (schema, valid, invalid, expectedError, refs) {
