@@ -122,6 +122,11 @@ describe('Schema validation', function() {
       validateSchema(new Schema({ key: [ ] }), { key: [ 'a', 1, 1.1 ] }, { key: 'value' },
         'Invalid prop `props.key` of type `string` supplied to `$1`, expected `array`.')
     })
+
+    it('Nested Schema', function() {
+      validateSchema(new Schema({ key: [ new Schema({ key: String }) ] }), { key: [ { key: 'a' } ] }, { key: [ { key: 1 }] },
+        'Invalid prop `props.key[0].key` of type `number` supplied to `$1`, expected `string`.')
+    })
   })
 
   describe('ObjectId', function () {

@@ -11,7 +11,14 @@ function getPropType (value, refs) {
   let type = PropTypes.any
 
   if (Array.isArray(schemaType)) {
-    type = schemaType.length > 0 ? PropTypes.arrayOf(getPropType(schemaType[0], refs)) : PropTypes.array
+    type = schemaType.length > 0
+      ? PropTypes.arrayOf(
+        // check if it's a nested schema
+        schemaType[0] instanceof Schema
+          ? fromSchema(schemaType[0], refs)
+          : getPropType(schemaType[0], refs)
+        )
+      : PropTypes.array
   } else if (typeof schemaType == 'object') {
     type = PropTypes.shape(Object.entries(schemaType)
       .reduce((propTypes, [ key, value ]) => (propTypes[key] = getPropType(value, refs), propTypes), {}))
