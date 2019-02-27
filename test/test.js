@@ -19,6 +19,12 @@ describe('Schema validation', function() {
     'The prop `key` is marked as required in `$1`, but its value is `undefined`.')
   })
 
+  it('Subdocuments', function () {
+    const SubSchema = new Schema({ a: String })
+    validateSchema(new Schema({ key: SubSchema }), { key: { a: 'value' } }, { key: { a: 0 } },
+      'Invalid prop `props.key.a` of type `number` supplied to `$1`, expected `string`.')
+  })
+
   describe('String', function () {
     it('Valid type', function() {
       validateSchema(new Schema({ key: String }), { key: 'value' }, { key: 0 },

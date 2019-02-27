@@ -12,6 +12,8 @@ function getPropType (value, refs) {
 
   if (Array.isArray(schemaType)) {
     type = schemaType.length > 0 ? PropTypes.arrayOf(getPropType(schemaType[0], refs)) : PropTypes.array
+  } else if (schemaType instanceof Schema) {
+    type = fromSchema(schemaType, refs)
   } else if (typeof schemaType == 'object') {
     type = PropTypes.shape(Object.entries(schemaType)
       .reduce((propTypes, [ key, value ]) => (propTypes[key] = getPropType(value, refs), propTypes), {}))
