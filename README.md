@@ -39,6 +39,7 @@ A PropTypes validation function.
 * Array
 * ObjectId
     - ref
+* Sub-documents a.k.a. embed schemas
 
 ## Example
 
